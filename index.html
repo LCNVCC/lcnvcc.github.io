@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liam's Way</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ITE 270 · Module 5 · Bakery Motion Lab starter
+       The layout and content are done. Your job is the MOTION.
+       Work through STEP 0 to STEP 10 in the lesson. Each step has a matching
+       "STEP" comment in styles.css or script.js. Press M to open the Motion X-ray. -->
+
+  <nav class="nav" aria-label="Main">
+    <div class="wrap">
+      <a class="logo" href="#top">Liam's Way</a>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#story">How we make it</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <!-- STEP 9: this button pauses every looping animation -->
+      <button class="pill" id="pauseBtn" type="button" aria-pressed="false">Pause motion</button>
+      <button class="cart" id="cart" type="button" aria-label="Your order">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v12H3zM3 8l3-4h12l3 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span class="count" id="count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Liam's Way · Fresh from 7 a.m.</p>
+        <!-- STEP 3: each word is a .w with its own --i number for the stagger -->
+        <h1><span class="w" style="--i:0">Fresh.</span> <span class="w" style="--i:1">Fun.</span> <span class="w" style="--i:2">Baked</span> <span class="w accent" style="--i:3">daily.</span></h1>
+        <p class="lede">Replace this line with one sentence about your shop: what you make and why people smile when they walk in.</p>
+        <div class="ctas">
+          <a class="btn" href="#menu">See the menu</a>
+          <a class="link" href="#story">How we make it <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <!-- STEP 4: animate at least two parts of this illustration.
+           Ready-made hooks: .steam (3 puffs), .awning, .sign, .mascot.
+           Add your own shapes and classes too. -->
+      <svg class="shop" viewBox="0 0 600 380" role="img" aria-labelledby="shopTitle">
+        <title id="shopTitle">The Liam's Way storefront</title>
+        <defs>
+          <pattern id="stripes" width="60" height="10" patternUnits="userSpaceOnUse">
+            <rect width="30" height="10" fill="#e4572e"/><rect x="30" width="30" height="10" fill="#fff8ef"/>
+          </pattern>
+        </defs>
+        <rect x="410" y="20" width="40" height="70" fill="#9c4a3a"/>
+        <g class="steam" fill="#ffffff">
+          <circle class="puff" cx="430" cy="12" r="11" style="--d:0s"/>
+          <circle class="puff" cx="430" cy="12" r="11" style="--d:1s"/>
+          <circle class="puff" cx="430" cy="12" r="11" style="--d:2s"/>
+        </g>
+        <rect x="70" y="80" width="460" height="280" rx="16" fill="#ffd9a8"/>
+        <rect x="56" y="70" width="488" height="24" rx="10" fill="#e4572e"/>
+        <g class="sign">
+          <rect x="210" y="104" width="180" height="54" rx="27" fill="#fff8ef"/>
+          <text x="300" y="139" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="24" fill="#e4572e">Liam's Way</text>
+        </g>
+        <g class="awning">
+          <rect x="90" y="172" width="420" height="40" fill="url(#stripes)"/>
+          <path fill="url(#stripes)" d="M90 210a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0a15 15 0 0 0 30 0Z"/>
+        </g>
+        <rect x="100" y="240" width="160" height="100" rx="10" fill="#fff8ef" stroke="#9c4a3a" stroke-width="5"/>
+        <rect x="270" y="236" width="80" height="124" rx="8" fill="#e4572e" stroke="#9c4a3a" stroke-width="5"/>
+        <circle cx="336" cy="300" r="5" fill="#ffd9a8"/>
+        <rect x="370" y="240" width="140" height="100" rx="10" fill="#fff8ef" stroke="#9c4a3a" stroke-width="5"/>
+        <!-- The mascot: a little bun with a face. Make it bounce, blink or wave. -->
+        <g class="mascot">
+          <ellipse cx="180" cy="312" rx="38" ry="24" fill="#d9903f"/>
+          <ellipse cx="180" cy="304" rx="30" ry="14" fill="#e8a95a"/>
+          <circle class="eye" cx="168" cy="310" r="3.5" fill="#3a2410"/>
+          <circle class="eye" cx="192" cy="310" r="3.5" fill="#3a2410"/>
+          <path d="M172 320q8 7 16 0" fill="none" stroke="#3a2410" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <rect x="0" y="358" width="600" height="22" fill="#e9d6bd"/>
+      </svg>
+    </header>
+
+    <!-- ===== MENU ===== -->
+    <section class="band" id="menu" aria-labelledby="menuTitle">
+      <div class="wrap">
+        <h2 id="menuTitle">Today's case</h2>
+        <p class="lede">Replace these six items with your menu. Keep the classes.</p>
+        <!-- STEP 2: cards lift on hover and focus. STEP 5: cards reveal on scroll (.reveal + --i). -->
+        <div class="grid">
+          <article class="card reveal" style="--i:0" data-name="Butter Croissant">
+            <div class="art" aria-hidden="true">🥐</div>
+            <h3>Butter Croissant</h3><p>Flaky, golden, gone by 10 a.m.</p>
+            <div class="row"><span class="price">$4.00</span><button class="btn small add" type="button">Add to order</button></div>
+          </article>
+          <article class="card reveal" style="--i:1" data-name="Sprinkle Donut">
+            <div class="art" aria-hidden="true">🍩</div>
+            <h3>Sprinkle Donut</h3><p>Pink glaze and rainbow sprinkles.</p>
+            <div class="row"><span class="price">$3.25</span><button class="btn small add" type="button">Add to order</button></div>
+          </article>
+          <article class="card reveal" style="--i:2" data-name="Country Loaf">
+            <div class="art" aria-hidden="true">🍞</div>
+            <h3>Country Loaf</h3><p>Sourdough with a crackly crust.</p>
+            <div class="row"><span class="price">$8.50</span><button class="btn small add" type="button">Add to order</button></div>
+          </article>
+          <article class="card reveal" style="--i:0" data-name="Birthday Cupcake">
+            <div class="art" aria-hidden="true">🧁</div>
+            <h3>Birthday Cupcake</h3><p>Vanilla, buttercream, a candle on request.</p>
+            <div class="row"><span class="price">$3.75</span><button class="btn small add" type="button">Add to order</button></div>
+          </article>
+          <article class="card reveal" style="--i:1" data-name="Chocolate Chip Cookie">
+            <div class="art" aria-hidden="true">🍪</div>
+            <h3>Chocolate Chip Cookie</h3><p>Crisp edges, soft middle.</p>
+            <div class="row"><span class="price">$2.50</span><button class="btn small add" type="button">Add to order</button></div>
+          </article>
+          <article class="card reveal" style="--i:2" data-name="Slice of Pie">
+            <div class="art" aria-hidden="true">🥧</div>
+            <h3>Slice of Pie</h3><p>Ask what fruit is in season.</p>
+            <div class="row"><span class="price">$5.00</span><button class="btn small add" type="button">Add to order</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 6: SCROLL STORY. Choose OPTION A or OPTION B and delete the other. ===== -->
+
+    <!-- OPTION A: pinned picture + steps. An IntersectionObserver sets data-step on #stage. -->
+    <section class="band tint" id="story" aria-labelledby="storyTitle">
+      <div class="wrap">
+        <h2 id="storyTitle">How we make it</h2>
+        <div class="story">
+          <div class="stage" id="stage" data-step="mix" aria-hidden="true">
+            <svg viewBox="0 0 300 240">
+              <path class="bowl" d="M40 150Q150 260 260 150Z" fill="#7fb7d8"/>
+              <ellipse class="dough" cx="150" cy="148" rx="70" ry="30" fill="#f4e3c3"/>
+            </svg>
+            <p class="stage-label" id="stageLabel">Mix</p>
+          </div>
+          <div class="steps">
+            <article class="step" data-step="mix"><h3>1. Mix</h3><p>Describe your first step here.</p></article>
+            <article class="step" data-step="shape"><h3>2. Shape</h3><p>Describe your second step here.</p></article>
+            <article class="step" data-step="rise"><h3>3. Rise</h3><p>Describe your third step here.</p></article>
+            <article class="step" data-step="bake"><h3>4. Bake</h3><p>Describe your fourth step here.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPTION B: product zoom. Scroll progress writes --p (0 to 1) on #zoom. -->
+    <section class="zoom" id="zoom" aria-labelledby="zoomTitle">
+      <div class="zoom-stage">
+        <div class="zoom-art" aria-hidden="true">🥐</div>
+        <h2 id="zoomTitle">Our signature bake</h2>
+        <p class="zoom-text">Replace with what makes it special.</p>
+      </div>
+    </section>
+
+    <!-- ===== VISIT ===== -->
+    <section class="band" id="visit" aria-labelledby="visitTitle">
+      <div class="wrap">
+        <h2 id="visitTitle">Come say hi</h2>
+        <p class="lede">123 Main Street · Open Tuesday to Sunday, 7 a.m. to 3 p.m.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="wrap"><p>Liam's Way is a class project for ITE 270.</p></div></footer>
+
+  <!-- STEP 7: announce what happened, for screen readers and everyone else -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+  <!-- Motion X-ray: press M. Remove this line before you publish if you like. -->
+  <script src="motion-xray.js"></script>
+</body>
+</html>
