@@ -2,8 +2,7 @@
 
 **Student:*Liam Cullen*
 **Shop name:*Liams Way*
-**Live site:** https://
-
+**Live site:** https://lcnvcc.github.io/#menu
 ## Motion sentences
 
 Write one row for every animation. Fill in all six parts:
@@ -12,17 +11,15 @@ Write one row for every animation. Fill in all six parts:
 
 Jobs: feedback, orientation, continuity, status, storytelling, delight.
 
-| # | Req | Trigger | Element | Property | Duration / delay | Easing | Job | Tool |
-|---|-----|---------|---------|----------|------------------|--------|-----|------|
-| 1 | R1 | hover or focus | button | scale 1.0 to 1.1 | 180ms(--fast) |  | feedback | transition |
-| 2 | R2 | page loads | title | translateX by -6em| (--slow), 100ms + 120ms | ease-out | delight | keyframes |
-| 3 | R3 | | | | | | | |
-| 4 | R3 | | | | | | | |
-| 5 | R4 | | | | | | | |
-| 6 | R5 | | | | | | | |
-| 7 | R6 | | | | | | | |
-| 8 | R6 | | | | | | | |
-
+# | Req | Trigger | Element | Property | Duration / delay | Easing | Job | Tool
+1 | R1 | hover or focus | button | scale 1.0 to 1.1 | 180ms (--fast) | ease | feedback | transition
+2 | R2 | page loads | title | translateX by -6em | (--slow), 100ms + 120ms | ease-out | delight | keyframes
+3 | R3 | page is loaded | awning | skewX 4.5deg | 4s | ease-in-out | delight | keyframes
+4 | R3 | page is loaded | puff | rises and changes color | 3.6s | ease-out | delight | keyframes
+5 | R4 | item enters viewport | cards | opacity 0 to 1; translateY 48px to 0 | 800ms, staggered by 90ms | ease-out | storytelling | IntersectionObserver
+6 | R5 | user scrolls through story steps | stage and SVG | background color, dough scale and fill, spoon and bowl appearance | 900ms–1.6s | ease-out | storytelling | IntersectionObserver
+7 | R6 | user clicks Add to box | artwork copy (ghost) | translate, scale down, rotate and fade | 900ms | cubic-bezier(.45,0,.25,1) | continuity | element.animate()
+8 | R6 | artwork reaches cart | cart count | scale 1 to 1.6 and back to 1 | 450ms | cubic-bezier(.34,1.56,.64,1) | feedback | element.animate()
 Tool = transition, @keyframes, IntersectionObserver, scroll progress, element.animate(), SVG, View Transition.
 
 ## Easing choices (R7)
@@ -30,9 +27,8 @@ Tool = transition, @keyframes, IntersectionObserver, scroll progress, element.an
 Name three different easing curves you used. For each, say in one sentence why it fits that motion.
 
 1. I used (--fast) 180ms on the buttons, when clicked or hovered over they need to react fast because the user doesn't want to wait for an animation to play just to see what they are about to click on.
-2.
-3.
-
+2. I used (--slow) on the scroll story because 
+3.  
 ## What I saw in the X-ray
 
 Pick one animation and describe what the Motion X-ray or the Chrome Animations panel showed you that you couldn't see at normal speed.

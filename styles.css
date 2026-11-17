@@ -23,7 +23,7 @@
   --ease-spring: cubic-bezier(.34, 1.56, .64, 1); /* playful overshoot */
 
   /* colors and type */
-  --cream: #fff8ef; --crust: #009900; --toast: #007500; --ink: #2b1d14; --muted: #6d5a4c; --tint: #fdf0e1;
+  --cream: #fdfdfd; --crust: #009900; --toast: #007500; --ink: #2b1d14; --muted: #636363; --tint: #eeeeee;
   --font: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
   --display: Georgia, "Times New Roman", serif;
 }
@@ -74,7 +74,7 @@ h1 { font-size: clamp(2.6rem, 8vw, 5rem); }
 .price { font-weight: 700; }
 
 .story { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-.stage { position: sticky; top: 90px; height: 360px; border-radius: 24px; background: #fff; display: grid; place-items: center; }
+.stage { position: sticky; top: 90px; height: 360px; border-radius: 24px; background: var(--stage-bg); display: grid; place-items: center; }
 .stage svg { width: 80%; height: auto; }
 .stage-label { position: absolute; top: 14px; left: 18px; font-weight: 700; }
 .step { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
@@ -127,13 +127,49 @@ h1 { font-size: clamp(2.6rem, 8vw, 5rem); }
    Ideas: .puff rises and fades (stagger with var(--d)), .awning sways,
    .mascot bounces (squash and stretch!), .eye blinks, .sign swings.       */
 
-   .awning { transform-box: fill-box; transform-origin: 50% 0;
+   :root:not(.paused) .awning { transform-box: fill-box; transform-origin: 50% 0;
       animation: sway 4s ease-in-out infinite alternate; }
-    @keyframes sway { from { transform: skewX(-1.5deg) } to { transform: skewX(1.5deg) } }
+    @keyframes sway { from { transform: skewX(-4deg) } to { transform: skewX(4.5deg) } }
+
+    :root:not(.paused) .puff{
+      transform-box:fill-box;transform-origin:center;      /* scale each puff around its own center */
+      opacity:0;
+      animation:steam 3.6s ease-out infinite;
+      animation-delay:var(--d);                             /* 0s, 1.2s, 2.4s: the puffs take turns */
+    }
+    @keyframes steam{
+      0%  {opacity:0;fill:white;transform:translateY(0) scale(.5)}
+      20% {opacity:.9;fill:darkgray;}
+      100%{opacity:0;fill:white;transform:translateY(-70px) translateX(18px) scale(1.6)}
+    }
+    :root:not(.paused) #eye-1 {
+      transform-origin: 168px 310px;
+      animation:wink 10s ease-out infinite;
+      
+    }
+    @keyframes wink {
+      0%,  6% {
+         
+         transform:scaleY(1);
+      }
+      5% {
+      
+        transform:scaleY(0.1);
+      }
+    }
 /* ---------- STEP 5: reveal on scroll (R4) -----------------------------------
    .reveal         gets a transition on opacity and transform, delayed by --i.
    .reveal.pending is the hidden starting state (opacity 0, moved down).
    JavaScript adds .pending only to cards below the fold, then removes it. */
+
+.reveal.pending{opacity:0;transform:translateY(48px)}       /* waiting below the fold */
+
+.reveal.arriving{                                          /* only while it comes in */
+  transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);
+  transition-delay:calc(var(--i,0) * 90ms);
+}
+
+   
 
 
 
@@ -144,13 +180,33 @@ h1 { font-size: clamp(2.6rem, 8vw, 5rem); }
    Give .dough transform-box, a bottom-center origin, and a slow transition.
    OPTION B: map --p to the art and text, for example
      .zoom-art { transform: scale(calc(.5 + var(--p) * .8)); }             */
+/*grow the product image*/
+     .zoom{--p:0;height:260vh}                                  /* extra height = scroll distance */
+     .zoom-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;padding-block:64px 20px}
+     .zoom-art{
+       transform:scale(calc(.45 + var(--p) * .75)) rotate(calc(-25deg + var(--p) * 25deg));
+       filter:drop-shadow(0 30px 60px rgba(255,159,10,calc(var(--p) * .45)));
+     }
 
+     /*steps*/
+     .stage{transition:background var(--slow) ease}
+.stage[data-step="mix"]  {--stage-bg:#000}
+.stage[data-step="shape"]{--stage-bg:#fff4dc}
+.stage[data-step="rise"]{--stage-bg:#fdeaf1}
+.stage[data-step="bake"] {--stage-bg:#ffe2bf}
 
+.dough{transform-box:fill-box;transform-origin:50% 100%;transition:transform 1.6s var(--ease-out),fill 1.4s ease}
+.spoon{transform-box:view-box;transform-origin:200px 190px;transition:opacity .4s}
+.bowl{transition:opacity .6s,transform .8s var(--ease-out)}
+.score,.wisp{transition:opacity .8s}
 
 /* ---------- STEP 7: click feedback (R6) -------------------------------------
    Most of this step is JavaScript. Style the toast's entrance here:
    transition .toast's transform and opacity so it slides up when .show is added. */
-
+   .add{transition:background var(--fast),transform var(--fast)}
+   .add:active{transform:scale(.94)}
+   .ghost{position:fixed;z-index:80;pointer-events:none;margin:0;font-size:3.5rem;text-align:center;}       /* the flying copy */
+   .toast{transition:transform var(--med) var(--ease-spring),opacity var(--fast)}
 
 
 /* ---------- STEP 9: motion for everyone (R8) --------------------------------

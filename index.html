@@ -21,7 +21,7 @@
         <li><a href="#visit">Visit</a></li>
       </ul>
       <!-- STEP 9: this button pauses every looping animation -->
-      <button class="pill" id="pauseBtn" type="button" aria-pressed="false">Pause motion</button>
+      <button class="pill" id="pauseBtn" type="button" aria-pressed="false"><span>Pause motion</span></button>
       <button class="cart" id="cart" type="button" aria-label="Your order">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v12H3zM3 8l3-4h12l3 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         <span class="count" id="count" hidden>0</span>
@@ -35,10 +35,10 @@
       <div class="wrap">
         <p class="eyebrow">Liam's Way · Fresh from 7 a.m.</p>
         <!-- STEP 3: each word is a .w with its own --i number for the stagger -->
-        <h1><span class="w" style="--i:0">Fresh.</span> <span class="w" style="--i:1">Fun.</span> <span class="w" style="--i:2">Baked</span> <span class="w accent" style="--i:3">daily.</span></h1>
+        <h1><span class="w" style="--i:0">Bagels.</span> <span class="w" style="--i:1">Dogs.</span> <span class="w" style="--i:2">Working traffic signal.</span> <span class="w accent" style="--i:3">Bagels!!!</span></h1>
         <p class="lede">Replace this line with one sentence about your shop: what you make and why people smile when they walk in.</p>
         <div class="ctas">
-          <a class="btn" href="#menu">See the menu</a>
+          <a class="btn" href="#menu">Our menu</a>
           <a class="link" href="#story">How we make it <span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -62,8 +62,8 @@
         <rect x="70" y="80" width="460" height="280" rx="16" fill="#ffd9a8"/>
         <rect x="56" y="70" width="488" height="24" rx="10" fill="#e4572e"/>
         <g class="sign">
-          <rect x="210" y="104" width="180" height="54" rx="27" fill="#fff8ef"/>
-          <text x="300" y="139" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="24" fill="#e4572e">Liam's Way</text>
+          <rect x="210" y="104" width="180" height="54" rx="27" fill="#009900"/>
+          <text x="300" y="139" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="24" fill="#ffffff">Liam's Way</text>
         </g>
         <g class="awning">
           <rect x="90" y="172" width="420" height="40" fill="url(#stripes)"/>
@@ -77,7 +77,7 @@
         <g class="mascot">
           <ellipse cx="180" cy="312" rx="38" ry="24" fill="#d9903f"/>
           <ellipse cx="180" cy="304" rx="30" ry="14" fill="#e8a95a"/>
-          <circle class="eye" cx="168" cy="310" r="3.5" fill="#3a2410"/>
+          <circle id="eye-1" class="eye" cx="168" cy="310" r="3.5" fill="#3a2410"/>
           <circle class="eye" cx="192" cy="310" r="3.5" fill="#3a2410"/>
           <path d="M172 320q8 7 16 0" fill="none" stroke="#3a2410" stroke-width="2.5" stroke-linecap="round"/>
         </g>
@@ -94,34 +94,30 @@
         <div class="grid">
           <article class="card reveal" style="--i:0" data-name="Butter Croissant">
             <div class="art" aria-hidden="true">🥐</div>
-            <h3>Butter Croissant</h3><p>Flaky, golden, gone by 10 a.m.</p>
+            <h3>Butter Croissant</h3><p>You will finish this Croissant.</p>
             <div class="row"><span class="price">$4.00</span><button class="btn small add" type="button">Add to order</button></div>
           </article>
           <article class="card reveal" style="--i:1" data-name="Sprinkle Donut">
             <div class="art" aria-hidden="true">🍩</div>
-            <h3>Sprinkle Donut</h3><p>Pink glaze and rainbow sprinkles.</p>
+            <h3>Sprinkle Donut</h3><p>Glazed dount with sprinkles.</p>
             <div class="row"><span class="price">$3.25</span><button class="btn small add" type="button">Add to order</button></div>
           </article>
-          <article class="card reveal" style="--i:2" data-name="Country Loaf">
-            <div class="art" aria-hidden="true">🍞</div>
-            <h3>Country Loaf</h3><p>Sourdough with a crackly crust.</p>
+          <article class="card reveal" style="--i:2" data-name="Bagel">
+            <div class="art" aria-hidden="true">🥯</div>
+            <h3>Bagel</h3><p>Classic bagel.</p>
             <div class="row"><span class="price">$8.50</span><button class="btn small add" type="button">Add to order</button></div>
           </article>
-          <article class="card reveal" style="--i:0" data-name="Birthday Cupcake">
-            <div class="art" aria-hidden="true">🧁</div>
-            <h3>Birthday Cupcake</h3><p>Vanilla, buttercream, a candle on request.</p>
+          <article class="card reveal" style="--i:0" data-name="Pancakes">
+            <div class="art" aria-hidden="true">🥞</div>
+            <h3>Pancakes</h3><p>With syrup! Or not, we can't tell you how to eat them.</p>
             <div class="row"><span class="price">$3.75</span><button class="btn small add" type="button">Add to order</button></div>
           </article>
           <article class="card reveal" style="--i:1" data-name="Chocolate Chip Cookie">
             <div class="art" aria-hidden="true">🍪</div>
-            <h3>Chocolate Chip Cookie</h3><p>Crisp edges, soft middle.</p>
+            <h3>Chocolate Chip Cookie</h3><p>Carefully engineered to be delicous.</p>
             <div class="row"><span class="price">$2.50</span><button class="btn small add" type="button">Add to order</button></div>
           </article>
-          <article class="card reveal" style="--i:2" data-name="Slice of Pie">
-            <div class="art" aria-hidden="true">🥧</div>
-            <h3>Slice of Pie</h3><p>Ask what fruit is in season.</p>
-            <div class="row"><span class="price">$5.00</span><button class="btn small add" type="button">Add to order</button></div>
-          </article>
+
         </div>
       </div>
     </section>
@@ -153,17 +149,17 @@
     <!-- OPTION B: product zoom. Scroll progress writes --p (0 to 1) on #zoom. -->
     <section class="zoom" id="zoom" aria-labelledby="zoomTitle">
       <div class="zoom-stage">
-        <div class="zoom-art" aria-hidden="true">🥐</div>
-        <h2 id="zoomTitle">Our signature bake</h2>
-        <p class="zoom-text">Replace with what makes it special.</p>
+        <div class="zoom-art" aria-hidden="true">🥯</div>
+        <h2 id="zoomTitle">Our favorite item.</h2>
+        <p class="zoom-text">There is nothing not to love about a bagel, especially a fresh baked fluffy bagel.</p>
       </div>
     </section>
 
     <!-- ===== VISIT ===== -->
     <section class="band" id="visit" aria-labelledby="visitTitle">
       <div class="wrap">
-        <h2 id="visitTitle">Come say hi</h2>
-        <p class="lede">123 Main Street · Open Tuesday to Sunday, 7 a.m. to 3 p.m.</p>
+        <h2 id="visitTitle">Come inside, buy our stuff.</h2>
+        <p class="lede">11200 Castleview Road · Open Tuesday to Sunday from 7:00 AM to 3:00 PM</p>
       </div>
     </section>
   </main>
